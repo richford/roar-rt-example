@@ -5,7 +5,7 @@ import 'jspsych/css/jspsych.css';
 import blueImg from './img/blue.png';
 import orangeImg from './img/orange.png';
 import { RoarFirekit } from '@bdelab/roar-firekit';
-import { rootDoc } from './firebaseConfig';
+import { roarConfig } from './roarConfig';
 import 'regenerator-runtime/runtime';
 
 /* create timeline */
@@ -32,12 +32,10 @@ const taskInfo = {
   ],
 };
 
-console.log(rootDoc);
-
 const firekit = new RoarFirekit({
-  rootDoc,
   userInfo: minimalUserInfo,
   taskInfo,
+  config: roarConfig,
 });
 
 await firekit.startRun();

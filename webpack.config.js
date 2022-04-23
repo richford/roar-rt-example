@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
   entry: {
     regeneratorRuntime: 'regenerator-runtime/runtime',
     index: './src/index.js',
-    firebaseConfig: './src/firebaseConfig.js',
+    roarConfig: '/src/roarConfig.js',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -21,7 +22,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Asteroid Attack',
+      title: 'ROAR Reaction Time Example',
     }),
   ],
   module: {
