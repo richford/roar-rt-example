@@ -1,0 +1,3 @@
+[submodule "src/jspsych-contrib"]
+	path = src/jspsych-contrib
+	url = https://github.com/yeatmanlab/jspsych-contrib.git

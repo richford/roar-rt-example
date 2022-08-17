@@ -14,6 +14,7 @@
   "dependencies": {
     "@bdelab/roar-firekit": "^1.1.0",
     "@jspsych/plugin-html-keyboard-response": "^1.1.0",
+    "@jspsych/plugin-html-multi-response": "file:../../oss_third_party/jspsych-plugins/plugin-html-multi-response",
     "@jspsych/plugin-image-keyboard-response": "^1.1.0",
     "firebase": "^9.6.9",
     "jspsych": "^7.2.1",

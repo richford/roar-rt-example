@@ -1,5 +1,6 @@
 import { initJsPsych } from 'jspsych';
 import htmlKeyboardResponse from '@jspsych/plugin-html-keyboard-response';
+import htmlMultiResponse from '@jspsych/plugin-html-multi-response';
 import imageKeyboardResponse from '@jspsych/plugin-image-keyboard-response';
 import 'jspsych/css/jspsych.css';
 import blueImg from './img/blue.png';
@@ -42,8 +43,6 @@ await firekit.startRun();
 
 const jsPsych = initJsPsych({
   on_data_update: function (data) {
-    console.log('In data update');
-    console.log(data);
     if (data.saveToFirestore) {
       firekit.writeTrial(data);
     }
@@ -56,14 +55,21 @@ const jsPsych = initJsPsych({
 
 /* define welcome message trial */
 const welcome = {
-  type: htmlKeyboardResponse,
+  type: htmlMultiResponse,
+  button_choices: ['a', 'b', 'c'],
+  keyboard_choices: 'ALL_KEYS',
   stimulus: 'Welcome to the experiment. Press any key to begin.',
+  on_finish: (data) => {
+    console.log(data);
+  },
 };
 timeline.push(welcome);
 
 /* define instructions trial */
 const instructions = {
-  type: htmlKeyboardResponse,
+  type: htmlMultiResponse,
+  button_choices: [],
+  keyboard_choices: 'ALL_KEYS',
   stimulus:
     '<p>In this experiment, a circle will appear in the center ' +
     'of the screen.</p><p>If the circle is <strong>blue</strong>, ' +
@@ -94,9 +100,10 @@ const test_stimuli = [
 ];
 
 const fixation = {
-  type: htmlKeyboardResponse,
+  type: htmlMultiResponse,
+  button_choices: [],
   stimulus: '<div style="font-size:60px;">+</div>',
-  choices: 'NO_KEYS',
+  keyboard_choices: 'NO_KEYS',
   trial_duration: function () {
     return jsPsych.randomization.sampleWithoutReplacement(
       [250, 500, 750, 1000, 1250, 1500, 1750, 2000],
